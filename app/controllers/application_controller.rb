@@ -7,6 +7,6 @@ class ApplicationController < Sinatra::Base
 end
 
   get '/' do
-    "Hello, World!"
-    end
+    erb :index
   end
+end
