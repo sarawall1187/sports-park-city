@@ -8,6 +8,6 @@ end
 
 use Rack::MethodOverride
 # use OtherController1
-# use OtherController2
-# use OtherController3
+use TeamController
+use AthleteController
 run ApplicationController
