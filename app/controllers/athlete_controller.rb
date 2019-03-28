@@ -47,7 +47,11 @@ class AthleteController < ApplicationController
 
     get '/athletes/:id/edit' do
       @athlete = Athlete.find(params[:id])
-      erb :'/athletes/edit'
+      if @athlete.id == session[:id]
+       erb :'/athletes/edit'
+     else
+       "You cannot edit someone else's profile."
+     end
     end
 
     patch '/athletes/:id' do
@@ -67,10 +71,14 @@ class AthleteController < ApplicationController
       end
     end
 
-    delete '/athletes/:id/delete' do #delete action
+    delete '/athletes/:id/delete' do
       @athlete = Athlete.find_by_id(params[:id])
-      @athlete.delete
-      redirect to '/signup'
-    end
+        if @athlete.id == session[:id]
+          @athlete.delete
+          redirect to '/signup'
+       else
+         "You cannot Delete someone else's profile."
+       end
+     end
 
 end
