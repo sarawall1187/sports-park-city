@@ -1,5 +1,6 @@
-<h1>I am in the athletes Index page</h1>
+<h1>Search for Local Athletes in Your Community</h1>
 
 <% @athletes.each do |athlete| %>
  <h3> <%= athlete.name %>  </h3>
+ <h4><a href="/athletes/<%= athlete.id %>">Choose this Player</a></h4>
 <% end %>
