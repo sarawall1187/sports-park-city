@@ -10,6 +10,12 @@ end
     erb :index
   end
 
+  get '/logout' do
+    session.clear
+    redirect to '/login'
+end
+
+
   helpers do
 
     def logged_in?
