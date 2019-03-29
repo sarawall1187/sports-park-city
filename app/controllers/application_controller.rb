@@ -22,9 +22,10 @@ end
       !!session[:user_id]
     end
 
-    def current_user(session)
-      @athlete = Athlete.find(session[:user_id])
-   end
+    def current_user
+      @athlete = Athlete.find_by(id: session[:user_id])
+    end
+
  end
 
 end
