@@ -1,4 +1,4 @@
-<h1>Athlete show page</h1>
+<h1>Your Profile</h1>
 
 <h3>Name:</h3> <%= @athlete.name %>
 
@@ -12,10 +12,13 @@
 
 <h3>Achievements: </h3> <%= @athlete.achievement %>
 <br>
+<% if @athlete == current_user %>
 <button type="submit" id="submit"><a href="/athletes/<%= @athlete.id %>/edit">Edit Your Profile</a></button>
 <form action="/athletes/<%= @athlete.id %>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Your Profile">
 </form>
+<% end %>
+<button type="submit" id="submit"><a href="/teams/new">Create a New Team</a></button>
 <button type="submit" id="submit"><a href="/athletes">Search for Athletes</a></button>
 <button type="submit" id="submit"><a href="/logout">Logout</a></button>
