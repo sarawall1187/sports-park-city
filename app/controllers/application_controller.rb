@@ -26,6 +26,10 @@ end
       @athlete = Athlete.find_by(id: session[:user_id])
     end
 
+    def empty_params?
+      params.values.any?{|val| val.empty?}
+    end
+
  end
 
 end

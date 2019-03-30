@@ -19,11 +19,13 @@ class AthleteController < ApplicationController
     end
 
     post '/signup' do
-      if params[:name].empty? || params[:email].empty? || params[:password].empty?
-        redirect to 'athletes/new'
+      if empty_params?
+        redirect to '/signup'
       else
-        @athlete = Athlete.create(:name => params[:name], :email => params[:email], :password => params[:password], :age => params[:age],
-        :height => params[:height], :weight => params[:weight], :achievement => params[:achievement])
+        # binding.pry
+        @athlete = Athlete.create(params)
+        # @athlete = Athlete.create(:name => params[:name], :email => params[:email], :password => params[:password], :age => params[:age],
+        # :height => params[:height], :weight => params[:weight], :achievement => params[:achievement])
         session[:athlete_id] = @athlete.id
         erb :'/athletes/show'
       end
@@ -46,24 +48,22 @@ class AthleteController < ApplicationController
     end
 
     get '/athletes/:id/edit' do
-      @athlete = Athlete.find(params[:id])
-      if @athlete.id == session[:id]
+      @athlete = Athlete.find(current_user.id)
+      if @athlete == current_user
        erb :'/athletes/edit'
      else
-       "You cannot edit someone else's profile."
+      #  "You cannot edit someone else's profile."
+       redirect to '/athletes/show'
      end
     end
 
     patch '/athletes/:id' do
-      @athlete = Athlete.find(params[:id])
-      if @athlete && logged_in?
-        @athlete.name = params[:name]
-        @athlete.email = params[:email]
-        @athlete.password = params[:password]
-        @athlete.age = params[:age]
-        @athlete.weight = params[:weight]
-        @athlete.height = params[:height]
-        @athlete.achievement = params[:achievement]
+      @athlete = Athlete.find(current_user.id)
+      if empty_params?
+        redirect to '/athletes/:id/edit'
+      elsif @athlete && logged_in? && current_user == @athlete
+        params.delete('_method')
+        @athlete.update(params)
         @athlete.save
          redirect to "/athletes/#{@athlete.id}"
       else
@@ -77,7 +77,8 @@ class AthleteController < ApplicationController
           @athlete.delete
           redirect to '/signup'
        else
-         "You cannot Delete someone else's profile."
+        #  "You cannot Delete someone else's profile."
+          redirect to '/athletes/show'
        end
      end
 
