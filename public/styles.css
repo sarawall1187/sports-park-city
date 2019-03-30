@@ -1,0 +1,50 @@
+/* Global Styles */
+
+body {
+  width: 90%;
+}
+
+header {
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+footer {
+  margin-top: 20%;
+  text-align: center;
+}
+
+section {
+  text-align: center;
+}
+
+h1 {
+  color: blue;
+}
+
+/* Login Page */
+
+#login h2 {
+  padding-right: 15%;
+  color: blue;
+}
+
+#login form #submit {
+  margin-top: 2%;
+}
+
+/* Signup Page */
+
+section form #submit {
+  margin-top: 2%;
+}
+
+/* Show Page */
+
+#buttons {
+  color: blue;
+
+}

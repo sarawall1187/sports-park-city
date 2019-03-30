@@ -1,15 +1,14 @@
-<h1>Please Update Your Information:</h1>
-
-<form action="/athletes/<%= @athlete.id %>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  Name:<input type="text" name="name" value="<%= @athlete.name %>"> <br>
-  <br>
-  Email:<input type="text" name="email"> <br>
-  <br>
-  Password:<input type="password" name="password"> <br> <br>
-  Age:<input type="text" name="age"><br> <br>
-  Height:<input type="text" name="height"><br> <br>
-  Weight:<input type="text" name="weight"><br> <br>
-  Achievements:<input type="text" name="achievement"><br> <br>
-  <input type="submit" value="submit">
-</form>
+<section>
+  <h1>Please Update Your Information:</h1>
+    <form action="/athletes/<%= @athlete.id %>" method="post">
+      <input id="hidden" type="hidden" name="_method" value="patch">
+        <h3>Name:</h3><input type="text" name="name" value="<%= @athlete.name %>"> <br><br>
+        <h3>Email:</h3><input type="text" name="email" value="<%= @athlete.email %>"> <br><br>
+        <h3>Password:</h3><input type="password" name="password" value=" <%= @athlete.password %>"> <br> <br>
+        <h3>Age:</h3><input type="text" name="age" value="<%= @athlete.age %>"><br> <br>
+        <h3>Height:</h3> <input type="text" name="height" value="<%= @athlete.height %>"><br> <br>
+        <h3>Weight:</h3> <input type="text" name="weight" value="<%= @athlete.weight %>"><br> <br>
+        <h3>Achievements:</h3><input type="text" name="achievement" value=" <%= @athlete.achievement %>"><br> <br>
+      <input type="submit" value="submit">
+    </form>
+</section>

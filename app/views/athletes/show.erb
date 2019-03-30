@@ -1,24 +1,22 @@
-<h1>Your Profile</h1>
-
-<h3>Name:</h3> <%= @athlete.name %>
-
-<h3>Email:</h3> <%= @athlete.email %>
-
-<h3>Age:</h3> <%= @athlete.age %>
-
-<h3>Height: </h3> <%= @athlete.height %>
-
-<h3>Weight: </h3> <%= @athlete.weight %>
-
-<h3>Achievements: </h3> <%= @athlete.achievement %>
-<br>
-<% if @athlete == current_user %>
-<button type="submit" id="submit"><a href="/athletes/<%= @athlete.id %>/edit">Edit Your Profile</a></button>
-<form action="/athletes/<%= @athlete.id %>/delete" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Your Profile">
-</form>
-<% end %>
-<button type="submit" id="submit"><a href="/teams/new">Create a New Team</a></button>
-<button type="submit" id="submit"><a href="/athletes">Search for Athletes</a></button>
-<button type="submit" id="submit"><a href="/logout">Logout</a></button>
+<section>
+  <h1>Your Profile</h1>
+    <h3>Name:</h3> <%= @athlete.name %>
+    <h3>Email:</h3> <%= @athlete.email %>
+    <h3>Age:</h3> <%= @athlete.age %>
+    <h3>Height:</h3> <%= @athlete.height %>
+    <h3>Weight:</h3> <%= @athlete.weight %>
+    <h3>Achievements:</h3> <%= @athlete.achievement %>
+</section>
+  <br>
+<section id="buttons">
+  <% if @athlete == current_user %>
+    <button type="submit" id="submit"><a href="/athletes/<%= @athlete.id %>/edit">Edit Your Profile</a></button><br>
+      <form action="/athletes/<%= @athlete.id %>/delete" method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Your Profile">
+      </form>
+  <% end %>
+  <button type="submit" id="submit"><a href="/teams/new">Create a New Team</a></button> <br>
+  <button type="submit" id="submit"><a href="/athletes">Search for Athletes</a></button> <br>
+  <button type="submit" id="submit"><a href="/logout">Logout</a></button> <br>
+</section>

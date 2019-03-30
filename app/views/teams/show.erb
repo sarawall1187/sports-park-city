@@ -1,6 +1,7 @@
-<h1>Your New Team:</h1>
-<h2><%= @team.name %></h2>
-<h2><%= @team.sport_type %></h2>
-<h2><%= @team.athlete.name %></h2>
-
-<button type="button" name="button"><a href="/athletes/<%= @team.athlete.id %>">Go Back to your Profile</a></button>
+<section>
+  <h1>Your New Team:</h1>
+    <h2><%= @team.name %></h2>
+    <h2><%= @team.sport_type %></h2>
+    <h2><%= @team.athlete.name %></h2>
+  <button type="button" name="button"><a href="/athletes/<%= @team.athlete.id %>">Go Back to your Profile</a></button>
+</section>
