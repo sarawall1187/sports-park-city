@@ -23,7 +23,10 @@ end
     end
 
     def current_user
-      @athlete = Athlete.find_by(id: session[:user_id])
+      Athlete.find(session[:user_id])
+
+      # @athlete = Athlete.find(params[:id])
+      # session[:user_id] = @athlete.id
     end
 
     def empty_params?

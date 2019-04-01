@@ -6,6 +6,7 @@ class AthleteController < ApplicationController
 
     post '/login' do
       @athlete = Athlete.find_by(:email => params[:email])
+      # binding.pry
         if @athlete && @athlete.authenticate(params[:password])
           session[:user_id] = @athlete.id
           redirect to "/athletes/#{@athlete.id}"
@@ -24,16 +25,17 @@ class AthleteController < ApplicationController
       else
         @athlete = Athlete.create(params)
         session[:athlete_id] = @athlete.id
-        # erb :'/athletes/show'
+
         redirect to "/athletes/#{@athlete.id}"
       end
     end
 
     get '/athletes' do
       if logged_in?
-        @athlete = Athlete.find(params[:id])
-        # binding.pry
-        # redirect to :"/athletes/#{@athlete.id}"
+          # binding.pry
+        # @athlete = Athlete.find(params[:id])
+        #
+        # # redirect to :"/athletes/#{@athlete.id}"
         @athletes = Athlete.all
         erb :'/athletes/index'
       else
@@ -42,14 +44,15 @@ class AthleteController < ApplicationController
     end
 
     get '/athletes/:id' do
-      @athlete = Athlete.find(params[:id])
       if logged_in?
+        @athlete = Athlete.find(params[:id])
+      # # binding.pry
         erb :'/athletes/show'
       end
     end
 
     get '/athletes/:id/edit' do
-      @athlete = Athlete.find(current_user.id)
+      @athlete = Athlete.find(params[:id])
       if @athlete == current_user
        erb :'/athletes/edit'
      else
