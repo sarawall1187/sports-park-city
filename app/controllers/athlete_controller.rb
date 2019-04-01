@@ -69,10 +69,11 @@ class AthleteController < ApplicationController
 
     delete '/athletes/:id/delete' do
       @athlete = Athlete.find_by_id(params[:id])
-       if @athlete.id == session[:id]
+        if @athlete && logged_in? && current_user == @athlete
+          params.delete('_method')
           @athlete.delete
-          redirect to '/signup'
-       else
+           redirect to '/signup'
+        else
           redirect to '/athletes/show'
        end
      end
