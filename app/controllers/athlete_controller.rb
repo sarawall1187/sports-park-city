@@ -6,7 +6,6 @@ class AthleteController < ApplicationController
 
     post '/login' do
       @athlete = Athlete.find_by(:email => params[:email])
-      # binding.pry
         if @athlete && @athlete.authenticate(params[:password])
           session[:user_id] = @athlete.id
           redirect to "/athletes/#{@athlete.id}"
@@ -25,17 +24,12 @@ class AthleteController < ApplicationController
       else
         @athlete = Athlete.create(params)
         session[:user_id] = @athlete.id
-
         redirect to "/athletes/#{@athlete.id}"
       end
     end
 
     get '/athletes' do
       if logged_in?
-          # binding.pry
-        # @athlete = Athlete.find(params[:id])
-        #
-        # # redirect to :"/athletes/#{@athlete.id}"
         @athletes = Athlete.all
         erb :'/athletes/index'
       else
@@ -46,7 +40,6 @@ class AthleteController < ApplicationController
     get '/athletes/:id' do
       if logged_in?
         @athlete = Athlete.find(params[:id])
-      # # binding.pry
         erb :'/athletes/show'
       end
     end
@@ -56,7 +49,6 @@ class AthleteController < ApplicationController
       if @athlete == current_user
        erb :'/athletes/edit'
      else
-      #  "You cannot edit someone else's profile."
        redirect to '/athletes/show'
      end
     end
@@ -69,7 +61,7 @@ class AthleteController < ApplicationController
         params.delete('_method')
         @athlete.update(params)
         @athlete.save
-         redirect to "/athletes/#{@athlete.id}"
+        redirect to "/athletes/#{@athlete.id}"
       else
         redirect to '/login'
       end
@@ -77,11 +69,10 @@ class AthleteController < ApplicationController
 
     delete '/athletes/:id/delete' do
       @athlete = Athlete.find_by_id(params[:id])
-        if @athlete.id == session[:id]
+       if @athlete.id == session[:id]
           @athlete.delete
           redirect to '/signup'
        else
-        #  "You cannot Delete someone else's profile."
           redirect to '/athletes/show'
        end
      end

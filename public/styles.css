@@ -7,9 +7,15 @@ body {
 header {
   text-align: center;
 }
+
 a {
   text-decoration: none;
-  color: black;
+  color: blue;
+}
+
+a:hover {
+  color: blue;
+  text-decoration: underline;
 }
 
 footer {
@@ -40,11 +46,4 @@ h1 {
 
 section form #submit {
   margin-top: 2%;
-}
-
-/* Show Page */
-
-#buttons {
-  color: blue;
-
 }

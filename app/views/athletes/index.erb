@@ -1,6 +1,7 @@
 <h1>Search for Local Athletes in Your Community</h1>
-
+<ul>
 <% @athletes.each do |athlete| %>
- <h3> <%= athlete.name %>  </h3>
- <h4><a href="/athletes/<%= athlete.id %>">Choose this Player</a></h4>
+<li><h3><a href="/athletes/<%= athlete.id %>"> View <%= athlete.name %>'s Profile</a></h3></li>
+ <!-- <h4><a href="/athletes/<%= athlete.id %>">Choose this Player</a></h4> -->
 <% end %>
+</ul>

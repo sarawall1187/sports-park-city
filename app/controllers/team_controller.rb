@@ -9,14 +9,10 @@ class TeamController < ApplicationController
   end
 
   post '/teams' do
-    #must be logged in at this point
     if params[:name].empty? || params[:sport_type].empty?
       redirect to '/teams/new'
     else
-      # binding.pry
-      # @athlete = Athlete.find(params[:id])
       @team = Team.create(:name => params[:name], :sport_type => params[:sport_type], :athlete_id => session[:user_id])
-
       redirect to "/teams/#{@team.id}"
     end
   end
@@ -25,13 +21,5 @@ class TeamController < ApplicationController
     @team = Team.find(params[:id])
     erb :'/teams/show'
   end
-
-
-  # post '/teams' do
-  #   #must be logged in at this point
-  #   @team = Team.create(:name => params[:name], :sport_type => params[:sport_type], :athlete_id => current_user.id)
-  #   redirect to "/teams/#{@team.id}"
-  # end
-  #
 
 end

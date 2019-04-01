@@ -24,15 +24,11 @@ end
 
     def current_user
       Athlete.find(session[:user_id])
-
-      # @athlete = Athlete.find(params[:id])
-      # session[:user_id] = @athlete.id
     end
 
     def empty_params?
       params.values.any?{|val| val.empty?}
     end
-
- end
+  end
 
 end
