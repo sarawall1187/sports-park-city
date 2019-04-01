@@ -25,7 +25,7 @@ class AthleteController < ApplicationController
         @athlete = Athlete.create(params)
         session[:athlete_id] = @athlete.id
         # erb :'/athletes/show'
-        redirect to "/athletes"
+        redirect to "/athletes/#{@athlete.id}"
       end
     end
 
@@ -33,9 +33,9 @@ class AthleteController < ApplicationController
       if logged_in?
         @athlete = Athlete.find(params[:id])
         # binding.pry
-        redirect to :"/athletes/#{@athlete.id}"
-        # @athletes = Athlete.all
-        # erb :'/athletes/index'
+        # redirect to :"/athletes/#{@athlete.id}"
+        @athletes = Athlete.all
+        erb :'/athletes/index'
       else
         redirect to '/login'
       end
