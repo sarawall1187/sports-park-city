@@ -24,7 +24,7 @@ class AthleteController < ApplicationController
         redirect to '/signup'
       else
         @athlete = Athlete.create(params)
-        session[:athlete_id] = @athlete.id
+        session[:user_id] = @athlete.id
 
         redirect to "/athletes/#{@athlete.id}"
       end
