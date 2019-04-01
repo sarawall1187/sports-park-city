@@ -22,19 +22,20 @@ class AthleteController < ApplicationController
       if empty_params?
         redirect to '/signup'
       else
-        # binding.pry
         @athlete = Athlete.create(params)
-        # @athlete = Athlete.create(:name => params[:name], :email => params[:email], :password => params[:password], :age => params[:age],
-        # :height => params[:height], :weight => params[:weight], :achievement => params[:achievement])
         session[:athlete_id] = @athlete.id
-        erb :'/athletes/show'
+        # erb :'/athletes/show'
+        redirect to "/athletes"
       end
     end
 
     get '/athletes' do
       if logged_in?
-        @athletes = Athlete.all
-        erb :'/athletes/index'
+        @athlete = Athlete.find(params[:id])
+        # binding.pry
+        redirect to :"/athletes/#{@athlete.id}"
+        # @athletes = Athlete.all
+        # erb :'/athletes/index'
       else
         redirect to '/login'
       end

@@ -6,6 +6,10 @@
     <h3>Height:</h3> <%= @athlete.height %>
     <h3>Weight:</h3> <%= @athlete.weight %>
     <h3>Achievements:</h3> <%= @athlete.achievement %>
+    <h3>My teams:</h3>
+    <% @athlete.teams.all.each do |athlete_team| %>
+     <%= @athlete.teams %>
+    <% end %>
 </section>
   <br>
 <section id="buttons">
