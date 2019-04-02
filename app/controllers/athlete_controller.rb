@@ -2,13 +2,10 @@ class AthleteController < ApplicationController
 
     get '/login' do
       if !logged_in?
-      erb :'/athletes/login'
-    else
-      # binding.pry
-      # @athlete = Athlete.find(params[:id])
-      # Athlete.find(current_user.id)
-      redirect to "/athletes/#{current_user.id}"
-    end
+        erb :'/athletes/login'
+      else
+       redirect to "/athletes/#{current_user.id}"
+     end
     end
 
     post '/login' do
@@ -35,6 +32,7 @@ class AthleteController < ApplicationController
       else
         @athlete = Athlete.create(params)
         session[:user_id] = @athlete.id
+        # flash[:message] = "New Account Successful"
         redirect to "/athletes/#{@athlete.id}"
       end
     end

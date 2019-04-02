@@ -6,17 +6,21 @@ body {
 
 header {
   text-align: center;
-}
+ }
+
+ ul li {
+   list-style-type: none;
+ }
 
 a {
   text-decoration: none;
-  color: blue;
-}
+  color: black;
+ }
 
 a:hover {
   color: blue;
   text-decoration: underline;
-}
+ }
 
 footer {
   margin-top: 20%;

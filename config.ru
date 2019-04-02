@@ -7,7 +7,7 @@ end
 
 
 use Rack::MethodOverride
-# use OtherController1
+# use Rack::Flash
 use TeamController
 use AthleteController
 run ApplicationController
