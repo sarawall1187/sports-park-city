@@ -1,7 +1,14 @@
 class AthleteController < ApplicationController
 
     get '/login' do
+      if !logged_in?
       erb :'/athletes/login'
+    else
+      # binding.pry
+      # @athlete = Athlete.find(params[:id])
+      # Athlete.find(current_user.id)
+      redirect to "/athletes/#{current_user.id}"
+    end
     end
 
     post '/login' do
@@ -15,7 +22,11 @@ class AthleteController < ApplicationController
      end
 
     get '/signup' do
-      erb :'/athletes/new'
+      if !logged_in?
+        erb :'/athletes/new'
+      else
+        redirect to '/'
+      end
     end
 
     post '/signup' do
