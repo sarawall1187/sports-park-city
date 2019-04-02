@@ -11,7 +11,7 @@
   <h3>My teams:</h3>
     <ol>
       <% @athlete.teams.all.each do |athlete_team| %>
-        <li> <%= athlete_team.name %> </li>
+        <li> <%= athlete_team.name %> - <%= athlete_team.sport_type %> </li>
       <% end %>
     </ol>
 
