@@ -21,5 +21,25 @@ class TeamController < ApplicationController
     @team = Team.find(params[:id])
     erb :'/teams/show'
   end
+  
+  get '/teams/:id/edit' do 
+    @team = Team.find(params[:id])
+    erb :'/teams/edit_team'
+  end
+  
+  patch '/teams/:id' do 
+    @team = Team.find(params[:id])
+    # binding.pry
+    if @team && logged_in? && current_user == @team.athlete
+      params.delete('_method')
+      @team.update(params)
+      @team.save
+     redirect to "/teams/#{@team.id}"
+   else 
+     redirect to "/teams/#{@team.id}"
+    end
+  end
+    
+  
 
 end

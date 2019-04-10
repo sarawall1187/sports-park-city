@@ -3,5 +3,10 @@
     <h2><%= @team.name %></h2>
     <h2><%= @team.sport_type %></h2>
     <h2><%= @team.athlete.name %></h2>
+  <button type="button" name="button"><a href="/teams/<%= @team.id %>/edit">Edit your Team</a></button>
+   <form action="/athletes/<%= @team.id %>/delete" method="post"><br>
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Your Profile"><br>
+      </form>
   <button type="button" name="button"><a href="/athletes/<%= @team.athlete.id %>">Go Back to your Profile</a></button>
 </section>

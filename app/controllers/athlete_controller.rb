@@ -81,6 +81,7 @@ class AthleteController < ApplicationController
         if @athlete && logged_in? && current_user == @athlete
           params.delete('_method')
           @athlete.delete
+          session[:user_id].clear
            redirect to '/signup'
         else
           redirect to '/athletes/show'
