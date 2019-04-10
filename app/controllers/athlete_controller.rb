@@ -65,7 +65,7 @@ class AthleteController < ApplicationController
     patch '/athletes/:id' do
       @athlete = Athlete.find(current_user.id)
       if empty_params?
-        redirect to '/athletes/:id/edit'
+        redirect to "/athletes/#{current_user.id}/edit"
       elsif @athlete && logged_in? && current_user == @athlete
         params.delete('_method')
         @athlete.update(params)
