@@ -29,7 +29,6 @@ class TeamController < ApplicationController
   
   patch '/teams/:id' do 
     @team = Team.find(params[:id])
-    # binding.pry
     if @team && logged_in? && current_user == @team.athlete
       params.delete('_method')
       @team.update(params)
@@ -39,6 +38,17 @@ class TeamController < ApplicationController
      redirect to "/teams/#{@team.id}"
     end
   end
+  
+    delete '/teams/:id/delete' do
+      @team = Team.find(params[:id])
+        if @team && logged_in? && current_user == @team.athlete
+          params.delete('_method')
+          @team.delete
+          redirect to "/athletes/#{@team.athlete.id}"
+        else
+          redirect to "/teams/#{@team.id}"
+       end
+     end
     
   
 

@@ -10,9 +10,11 @@
 
   <h3>My teams:</h3>
     <ol>
+       
       <% @athlete.teams.all.each do |athlete_team| %>
-        <li> <%= athlete_team.name %> - <%= athlete_team.sport_type %> </li>
-        <!--<li><h3><a href="/athletes/<%= athlete.id %>"> View <%= athlete.name %>'s Profile</a></h3></li>-->
+     
+        <li><a  href="/teams/<%= athlete_team.id %>"> <%= athlete_team.name %> - <%= athlete_team.sport_type %> </a> </li>
+      
       <% end %>
     </ol>
 
