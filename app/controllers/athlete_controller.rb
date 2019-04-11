@@ -29,6 +29,8 @@ class AthleteController < ApplicationController
     post '/signup' do
       if empty_params?
         redirect to '/signup'
+      elsif Athlete.find_by(:email => params[:email])
+        redirect to '/login'
       else
         @athlete = Athlete.create(params)
         session[:user_id] = @athlete.id
