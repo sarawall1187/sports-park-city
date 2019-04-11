@@ -24,7 +24,11 @@ class TeamController < ApplicationController
   
   get '/teams/:id/edit' do 
     @team = Team.find(params[:id])
-    erb :'/teams/edit_team'
+    if @team && logged_in? && current_user == @team.athlete
+     erb :'/teams/edit_team'
+    else
+     redirect to "/teams/#{@team.id}"
+   end
   end
   
   patch '/teams/:id' do 
